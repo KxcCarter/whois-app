@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 
-//  TODO: build routes here
-
 // GET routes
 // movies
 router.get('/movies', (req, res) => {
@@ -24,7 +22,7 @@ router.get('/movies', (req, res) => {
 router.get('/movies/:id', (req, res) => {
   const id = req.params.id;
   const query = `SELECT * FROM movies WHERE id = $1;`;
-
+  // NOTE: This query needs to include genres. I need to use a join here.
   pool
     .query(query, [id])
     .then((dbRes) => {
@@ -94,10 +92,11 @@ router.put('/edit/:id', (req, res) => {
 });
 //END PUT ROUTE
 
+// DELETE route
 router.delete('/:id', (req, res) => {
   const id = req.params.id;
   const query = `DELETE FROM movies WHERE id = $1;`;
-
+  // NOTE! I can't just delete from the movies table. I also have to delete from the movies_genre table, and I have to do that FIRST.
   pool
     .query(query, [id])
     .then((dbRes) => {
@@ -109,6 +108,6 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-// DELETE route
+// END DELETE ROUTE
 
 module.exports = router;
