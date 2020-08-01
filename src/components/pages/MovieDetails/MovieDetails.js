@@ -41,25 +41,43 @@ class MovieDetails extends Component {
     );
     return (
       <Box>
-        <Button variant="text" onClick={() => this.props.history.push('/')}>
-          Back to list
-        </Button>
+        <Box m={2}>
+          <Button
+            variant="outlined"
+            onClick={() => this.props.history.push('/')}
+          >
+            Back to list
+          </Button>
+          <Button
+            variant="outlined"
+            onClick={() =>
+              this.props.history.push(`/edit/${this.props.details.id}`)
+            }
+          >
+            Edit Movie
+          </Button>
+        </Box>
         <Card>
           <CardHeader title={this.props.details.title} />
-          <CardMedia
-            image={this.props.details.poster}
-            className={classes.root}
-            title={this.props.details.title}
-          />
+          <Box m={2}>
+            <CardMedia
+              image={this.props.details.poster}
+              className={classes.root}
+              title={this.props.details.title}
+            />
+          </Box>
           <CardContent>
-            <Typography variant="caption">
-              {this.props.details.genres}
-            </Typography>
+            <Box m={1}>
+              <Typography variant="caption">
+                {this.props.details.genres}
+              </Typography>
+            </Box>
             <Typography variant="body2" color="textSecondary" component="p">
               {this.props.details.description}
             </Typography>
             <Box m={2}>
               <Button
+                variant="outlined"
                 onClick={() =>
                   this.props.history.push(`/edit/${this.props.details.id}`)
                 }

@@ -47,7 +47,7 @@ class EditMovie extends Component {
       poster: this.props.details.poster,
       genres: [this.props.details.genres],
     });
-    this.props.history.push('/');
+    this.props.history.goBack();
   };
 
   render() {
@@ -91,7 +91,7 @@ class EditMovie extends Component {
 
               <Box m={2}>
                 <Button onClick={this.handleSave}>Save Changes</Button>
-                <Button>Cancel</Button>
+                <Button onClick={this.handleCancel}>Cancel</Button>
               </Box>
             </Box>
           </Paper>
