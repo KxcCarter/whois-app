@@ -8,7 +8,7 @@ App that displays movie data from database. Allows user to click on a single mov
 
 [ ] Build sagas to communicate with movies.router.js
 
-[ ] Build a reducer to store rows from database.
+[ ] Build reducers to store rows from database.
 
 [ ] Create card template for movie list display.
 

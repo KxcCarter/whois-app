@@ -36,7 +36,7 @@ function* getAllMovies(action) {
 
 function* getSingleMovie(action) {
   try {
-    const response = yield axios.get(`/api/movies/${action.payload}`);
+    const response = yield axios.get(`/api/movies/movies/${action.payload}`);
     yield put({
       type: 'SET_SINGLE_MOVIE',
       payload: response.data,

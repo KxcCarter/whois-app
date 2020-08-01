@@ -3,6 +3,9 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './App.css';
 
+// --- custom components ---
+import TESTMOVIEITEM from '../pages/MovieItem/MovieItem';
+
 class App extends Component {
   // Renders the entire app on the DOM
   render() {
@@ -11,6 +14,7 @@ class App extends Component {
         <div className="App">
           <p>Empty Page</p>
         </div>
+        <TESTMOVIEITEM />
       </Router>
     );
   }

@@ -3,7 +3,7 @@ const router = express.Router();
 const pool = require('../modules/pool');
 
 // GET routes
-// movies
+// GET all movies
 router.get('/movies', (req, res) => {
   const query = `SELECT * FROM movies;`;
 
@@ -21,14 +21,16 @@ router.get('/movies', (req, res) => {
 // GET specific movie
 router.get('/movies/:id', (req, res) => {
   const id = req.params.id;
-  const query = `SELECT movies.title, movies.description, movies.poster, genres.name FROM movies
-                JOIN movies_genre on movies_genre.movie_id = movies.id
-                JOIN genres on genres.id = movies_genre.genre_id
-                WHERE movies.id = $1;`;
-  // NOTE: This query needs to include genres. I need to use a join here.
+  console.log(id);
+  const query = `SELECT movies.id, movies.title, movies.description, movies.poster, array_agg(genres.name) AS genres FROM movies
+                JOIN movies_genre ON movies.id = movies_genre.movie_id
+                JOIN genres ON genres.id = movies_genre.genre_id
+                WHERE movies.id = $1
+                GROUP BY movies.id;`;
   pool
     .query(query, [id])
     .then((dbRes) => {
+      console.log(dbRes.rows);
       res.send(dbRes.rows);
     })
     .catch((err) => {
