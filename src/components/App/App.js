@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <Router>
         <Container maxWidth="md">
-          <Box p={3}>
+          <Box mx="auto" p={3}>
             <Typography variant="h2">Movie List</Typography>
           </Box>
 

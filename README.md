@@ -6,13 +6,13 @@ App that displays movie data from database. Allows user to click on a single mov
 
 ## TO DO
 
-[ ] Build sagas to communicate with movies.router.js
+[x] Build sagas to communicate with movies.router.js
 
-[ ] Build reducers to store rows from database.
+[x] Build reducers to store rows from database.
 
-[ ] Create card template for movie list display.
+[x] Create card template for movie list display.
 
-[ ] Map movie data into card template. This will be Home/List page.
+[x] Map movie data into card template. This will be Home/List page.
 
 [ ] Create ability to display an individual movie from list by clicking on movie poster.
 

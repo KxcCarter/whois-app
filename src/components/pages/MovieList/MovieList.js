@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import MovieItem from '../MovieItem/MovieItem';
 import { connect } from 'react-redux';
@@ -14,16 +13,13 @@ class MovieList extends Component {
   render() {
     const fullMovieList = this.props.store.movies.map((item, index) => {
       return (
-        <Grid item xs={6}>
-          <Paper>
-            <MovieItem
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              description={item.description}
-              poster={item.poster}
-            />
-          </Paper>
+        <Grid key={item.id} item xs={6}>
+          <MovieItem
+            id={item.id}
+            title={item.title}
+            description={item.description}
+            poster={item.poster}
+          />
         </Grid>
       );
     });
