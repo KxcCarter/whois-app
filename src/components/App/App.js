@@ -6,17 +6,20 @@ import './App.css';
 // --- custom components ---
 
 import MovieList from '../pages/MovieList/MovieList';
+import { Container, Box, Typography } from '@material-ui/core';
 
 class App extends Component {
   // Renders the entire app on the DOM
   render() {
     return (
       <Router>
-        <div className="App">
-          <h1>Movie List Home</h1>
-        </div>
+        <Container maxWidth="md">
+          <Box p={3}>
+            <Typography variant="h2">Movie List</Typography>
+          </Box>
 
-        <MovieList />
+          <MovieList />
+        </Container>
       </Router>
     );
   }

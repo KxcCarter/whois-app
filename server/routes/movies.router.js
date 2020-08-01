@@ -4,7 +4,7 @@ const pool = require('../modules/pool');
 
 // GET routes
 // GET all movies
-router.get('/movies', (req, res) => {
+router.get('/', (req, res) => {
   const query = `SELECT * FROM movies;`;
 
   pool
@@ -19,7 +19,7 @@ router.get('/movies', (req, res) => {
 });
 
 // GET specific movie
-router.get('/movies/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const id = req.params.id;
   console.log(id);
   const query = `SELECT movies.id, movies.title, movies.description, movies.poster, array_agg(genres.name) AS genres FROM movies

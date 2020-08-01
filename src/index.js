@@ -28,7 +28,7 @@ function* getAllMovies(action) {
       type: 'SET_MOVIES',
       payload: response.data,
     });
-    console.log(response.data);
+    console.log('Movies from the database: ', response.data);
   } catch (err) {
     console.log('ERROR in GET movies Saga: ', err);
   }
@@ -36,7 +36,8 @@ function* getAllMovies(action) {
 
 function* getSingleMovie(action) {
   try {
-    const response = yield axios.get(`/api/movies/movies/${action.payload}`);
+    const response = yield axios.get(`/api/movies/${action.payload}`);
+    console.log('Get one movie payload:', action.payload);
     yield put({
       type: 'SET_SINGLE_MOVIE',
       payload: response.data,
@@ -67,7 +68,7 @@ const sagaMiddleware = createSagaMiddleware();
 const movies = (state = [], action) => {
   switch (action.type) {
     case 'SET_MOVIES':
-      return action.payload;
+      return (state = action.payload);
     default:
       return state;
   }
