@@ -14,15 +14,15 @@ App that displays movie data from database. Allows user to click on a single mov
 
 [x] Map movie data into card template. This will be Home/List page.
 
-[ ] Create ability to display an individual movie from list by clicking on movie poster.
+[x] Create ability to display an individual movie from list by clicking on movie poster.
 
-- Genre data should be displayed on this details page.
-- "Back to List" button should be displayed as well.
+- [ ] Genre data should be displayed on this details page.
+- [ ] "Back to List" button should be displayed as well.
 
 [ ] Create ability to edit movie title and description. This will use Router to direct user to a new component page, rather than modifying the component directly.
 
-- Allow user to cancel changes or save changes.
-- Return back to display component after save or cancel.
+- [ ] Allow user to cancel changes or save changes.
+- [ ] Return back to display component after save or cancel.
 
 [ ] Style app using Material-UI _I may want to do this first_
 

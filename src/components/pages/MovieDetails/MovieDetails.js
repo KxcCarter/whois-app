@@ -7,6 +7,15 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
+import { Box, Button } from '@material-ui/core';
+
+const styles = (theme) => ({
+  root: {
+    maxWidth: 350,
+    height: 450,
+  },
+});
 
 class MovieDetails extends Component {
   componentDidMount() {
@@ -21,23 +30,34 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const genres = this.props.details.genres;
+    const { classes } = this.props;
 
-    console.log(genres);
+    console.log(this.props.details.genres);
     return (
-      <Card>
-        <CardHeader title={this.props.details.title} />
-        <CardMedia
-          image={this.props.details.poster}
-          title={this.props.details.title}
-        />
-        <CardContent>
-          <Typography variant="caption">{genres}</Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {this.props.details.description}
-          </Typography>
-        </CardContent>
-      </Card>
+      <Box>
+        <Button variant="text" onClick={() => this.props.history.push('/')}>
+          Back to list
+        </Button>
+        <Card>
+          <CardHeader title={this.props.details.title} />
+          <CardMedia
+            className={classes.root}
+            image={this.props.details.poster}
+            title={this.props.details.title}
+          />
+          <CardContent>
+            <Typography variant="caption">
+              {this.props.details.genres}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {this.props.details.description}
+            </Typography>
+            <Box m={2}>
+              <Button>Edit Movie</Button>
+            </Box>
+          </CardContent>
+        </Card>
+      </Box>
     );
   }
 }
@@ -46,4 +66,4 @@ const mapStoreToProps = (store) => {
   return { details: store.singleMovie };
 };
 
-export default connect(mapStoreToProps)(MovieDetails);
+export default connect(mapStoreToProps)(withStyles(styles)(MovieDetails));
