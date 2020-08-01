@@ -10,21 +10,31 @@ import Typography from '@material-ui/core/Typography';
 
 class MovieDetails extends Component {
   componentDidMount() {
+    const {
+      match: { params },
+    } = this.props;
+    console.log('Movie id we are searching for:', params.id);
     this.props.dispatch({
       type: 'GET_SINGLE_MOVIE',
-      payload: this.props.id,
+      payload: params.id,
     });
   }
 
   render() {
-    console.log(this.props.id);
+    const genres = this.props.details.genres;
+
+    console.log(genres);
     return (
       <Card>
-        <CardHeader title={this.props.title} subheader="September 14, 2016" />
-        <CardMedia image={this.props.poster} title={this.props.title} />
+        <CardHeader title={this.props.details.title} />
+        <CardMedia
+          image={this.props.details.poster}
+          title={this.props.details.title}
+        />
         <CardContent>
+          <Typography variant="caption">{genres}</Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {this.props.description}
+            {this.props.details.description}
           </Typography>
         </CardContent>
       </Card>
@@ -33,7 +43,7 @@ class MovieDetails extends Component {
 }
 
 const mapStoreToProps = (store) => {
-  return { store };
+  return { details: store.singleMovie };
 };
 
 export default connect(mapStoreToProps)(MovieDetails);

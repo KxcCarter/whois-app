@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 
 // --- Material-UI ---
 import { makeStyles } from '@material-ui/core/styles';
@@ -22,6 +23,13 @@ const useStyles = makeStyles({
 
 const MovieItem = (props) => {
   const classes = useStyles();
+  const history = useHistory();
+
+  const handleClick = () => {
+    console.log(`I was clicked! and my id is ${props.id}`);
+    history.push(`/details/${props.id}`);
+  };
+
   return (
     <Card>
       <CardHeader title={props.title} />
@@ -30,6 +38,7 @@ const MovieItem = (props) => {
           image={props.poster}
           title={props.title}
           className={classes.media}
+          onClick={handleClick}
         />
       </Box>
 

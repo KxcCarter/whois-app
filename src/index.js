@@ -28,7 +28,6 @@ function* getAllMovies(action) {
       type: 'SET_MOVIES',
       payload: response.data,
     });
-    console.log('Movies from the database: ', response.data);
   } catch (err) {
     console.log('ERROR in GET movies Saga: ', err);
   }
@@ -77,7 +76,7 @@ const movies = (state = [], action) => {
 const singleMovie = (state = [], action) => {
   switch (action.type) {
     case 'SET_SINGLE_MOVIE':
-      return action.payload;
+      return action.payload[0];
     default:
       return state;
   }

@@ -18,10 +18,9 @@ router.get('/', (req, res) => {
     });
 });
 
-// GET specific movie
+// GET single movie
 router.get('/:id', (req, res) => {
   const id = req.params.id;
-  console.log(id);
   const query = `SELECT movies.id, movies.title, movies.description, movies.poster, array_agg(genres.name) AS genres FROM movies
                 JOIN movies_genre ON movies.id = movies_genre.movie_id
                 JOIN genres ON genres.id = movies_genre.genre_id

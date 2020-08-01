@@ -7,6 +7,7 @@ import './App.css';
 
 import MovieList from '../pages/MovieList/MovieList';
 import { Container, Box, Typography } from '@material-ui/core';
+import MovieDetails from '../pages/MovieDetails/MovieDetails';
 
 class App extends Component {
   // Renders the entire app on the DOM
@@ -18,7 +19,8 @@ class App extends Component {
             <Typography variant="h2">Movie List</Typography>
           </Box>
 
-          <MovieList />
+          <Route exact path="/" component={MovieList}></Route>
+          <Route path="/details/:id" component={MovieDetails}></Route>
         </Container>
       </Router>
     );
