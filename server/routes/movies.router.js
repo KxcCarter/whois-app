@@ -21,7 +21,10 @@ router.get('/movies', (req, res) => {
 // GET specific movie
 router.get('/movies/:id', (req, res) => {
   const id = req.params.id;
-  const query = `SELECT * FROM movies WHERE id = $1;`;
+  const query = `SELECT movies.title, movies.description, movies.poster, genres.name FROM movies
+                JOIN movies_genre on movies_genre.movie_id = movies.id
+                JOIN genres on genres.id = movies_genre.genre_id
+                WHERE movies.id = $1;`;
   // NOTE: This query needs to include genres. I need to use a join here.
   pool
     .query(query, [id])
