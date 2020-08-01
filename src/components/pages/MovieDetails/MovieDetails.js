@@ -22,7 +22,10 @@ class MovieDetails extends Component {
     const {
       match: { params },
     } = this.props;
-    console.log('Movie id we are searching for:', params.id);
+
+    const id = params.id;
+    console.log('Movie id we are searching for:', id);
+
     this.props.dispatch({
       type: 'GET_SINGLE_MOVIE',
       payload: params.id,
@@ -32,7 +35,10 @@ class MovieDetails extends Component {
   render() {
     const { classes } = this.props;
 
-    console.log(this.props.details.genres);
+    console.log(
+      'Logging this.props.details.genres:',
+      this.props.details.genres
+    );
     return (
       <Box>
         <Button variant="text" onClick={() => this.props.history.push('/')}>
@@ -41,8 +47,8 @@ class MovieDetails extends Component {
         <Card>
           <CardHeader title={this.props.details.title} />
           <CardMedia
-            className={classes.root}
             image={this.props.details.poster}
+            className={classes.root}
             title={this.props.details.title}
           />
           <CardContent>
@@ -53,7 +59,13 @@ class MovieDetails extends Component {
               {this.props.details.description}
             </Typography>
             <Box m={2}>
-              <Button>Edit Movie</Button>
+              <Button
+                onClick={() =>
+                  this.props.history.push(`/edit/${this.props.details.id}`)
+                }
+              >
+                Edit Movie
+              </Button>
             </Box>
           </CardContent>
         </Card>

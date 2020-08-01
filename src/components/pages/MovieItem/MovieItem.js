@@ -25,8 +25,7 @@ const MovieItem = (props) => {
   const classes = useStyles();
   const history = useHistory();
 
-  const handleClick = () => {
-    console.log(`I was clicked! and my id is ${props.id}`);
+  const handleClick = (event) => {
     history.push(`/details/${props.id}`);
   };
 
