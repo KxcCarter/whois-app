@@ -59,12 +59,12 @@ router.post('/', (req, res) => {
   ("title", "poster", "description")
 VALUES ($1, $2, $3)`;
   // TODO: finish skeleton req.body destructuring
-  const movieTitle = req.body;
-  const moviePoster = req.body;
-  const movieDescription = req.body;
+  const movieTitle = req.body.title;
+  const moviePoster = req.body.poster;
+  const movieDescription = req.body.description;
 
   pool
-    .query(query, [])
+    .query(query, [movieTitle, moviePoster, movieDescription])
     .then((dbRes) => {
       res.sendStatus(201);
     })

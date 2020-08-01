@@ -18,9 +18,9 @@ CREATE TABLE "genres"
 -- This table will need to be populated with some data as well (INSERTS)
 CREATE TABLE movies_genre
 (
+  id SERIAL PRIMARY KEY,
   movie_id integer NOT NULL REFERENCES movies,
-  genre_id integer NOT NULL REFERENCES genres,
-  PRIMARY KEY (movie_id, genre_id)
+  genre_id integer NOT NULL REFERENCES genres
 );
 
 
