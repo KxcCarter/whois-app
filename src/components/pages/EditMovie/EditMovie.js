@@ -9,6 +9,7 @@ class EditMovie extends Component {
   state = {
     title: this.props.details.title,
     description: this.props.details.description,
+    id: this.props.details.id,
   };
 
   componentDidMount() {
@@ -31,11 +32,13 @@ class EditMovie extends Component {
     });
   };
 
-  //   handleSave = () => {
-  //     this.props.dispatch({
-  //       type:
-  //     });
-  //   };
+  handleSave = () => {
+    this.props.dispatch({
+      type: 'UPDATE_MOVIE',
+      payload: this.state,
+    });
+    this.props.history.push(`/details/${this.props.details.id}`);
+  };
 
   handleCancel = () => {
     this.setState({
@@ -87,7 +90,7 @@ class EditMovie extends Component {
               />
 
               <Box m={2}>
-                <Button>Save Changes</Button>
+                <Button onClick={this.handleSave}>Save Changes</Button>
                 <Button>Cancel</Button>
               </Box>
             </Box>

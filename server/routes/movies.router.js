@@ -81,8 +81,8 @@ VALUES ($1, $2, $3)`;
 router.put('/edit/:id', (req, res) => {
   const query = `UPDATE movies SET title = $1, description = $2 WHERE id = $3;`;
   const id = req.params.id;
-  const updatedTitle = req.body.updatedTitle;
-  const updatedDescription = req.body.updatedDescription;
+  const updatedTitle = req.body.title;
+  const updatedDescription = req.body.description;
 
   pool
     .query(query, [updatedTitle, updatedDescription, id])
