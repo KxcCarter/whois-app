@@ -58,7 +58,6 @@ router.post('/', (req, res) => {
   const query = `INSERT INTO "movies"
   ("title", "poster", "description")
 VALUES ($1, $2, $3)`;
-  // TODO: finish skeleton req.body destructuring
   const movieTitle = req.body.title;
   const moviePoster = req.body.poster;
   const movieDescription = req.body.description;
@@ -73,8 +72,26 @@ VALUES ($1, $2, $3)`;
       res.sendStatus(500);
     });
 });
+// END POST ROUTE
 
 // PUT route
+
+router.put('/edit/:id', (req, res) => {
+  const query = `UPDATE movies SET title = $1, description = $2 WHERE id = $3;`;
+  const id = req.params.id;
+  const updatedTitle = req.body.updatedTitle;
+  const updatedDescription = req.body.updatedDescription;
+
+  pool
+    .query(query, [updatedTitle, updatedDescription, id])
+    .then((dbRes) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log('PUT error: ', err);
+      res.sendStatus(500);
+    });
+});
 
 // DELETE route
 
