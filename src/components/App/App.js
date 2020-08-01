@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import './App.css';
 
 // --- custom components ---
-import TESTMOVIEITEM from '../pages/MovieItem/MovieItem';
+
+import MovieList from '../pages/MovieList/MovieList';
 
 class App extends Component {
   // Renders the entire app on the DOM
@@ -12,9 +13,10 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <p>Empty Page</p>
+          <h1>Movie List Home</h1>
         </div>
-        <TESTMOVIEITEM />
+
+        <MovieList />
       </Router>
     );
   }
