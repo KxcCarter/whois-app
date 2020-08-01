@@ -92,6 +92,22 @@ router.put('/edit/:id', (req, res) => {
       res.sendStatus(500);
     });
 });
+//END PUT ROUTE
+
+router.delete('/:id', (req, res) => {
+  const id = req.params.id;
+  const query = `DELETE FROM movies WHERE id = $1;`;
+
+  pool
+    .query(query, [id])
+    .then((dbRes) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log('DELETE error: ', err);
+      res.sendStatus(500);
+    });
+});
 
 // DELETE route
 
