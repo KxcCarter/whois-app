@@ -4,8 +4,8 @@ const pool = require('../modules/pool');
 
 // GET routes
 // GET all movies
-router.get('/movies', (req, res) => {
-  const query = `SELECT * FROM movies;`;
+router.get('/', (req, res) => {
+  const query = `SELECT * FROM movies ORDER BY movies.id;`;
 
   pool
     .query(query)
@@ -18,10 +18,9 @@ router.get('/movies', (req, res) => {
     });
 });
 
-// GET specific movie
-router.get('/movies/:id', (req, res) => {
+// GET single movie
+router.get('/:id', (req, res) => {
   const id = req.params.id;
-  console.log(id);
   const query = `SELECT movies.id, movies.title, movies.description, movies.poster, array_agg(genres.name) AS genres FROM movies
                 JOIN movies_genre ON movies.id = movies_genre.movie_id
                 JOIN genres ON genres.id = movies_genre.genre_id
@@ -82,8 +81,8 @@ VALUES ($1, $2, $3)`;
 router.put('/edit/:id', (req, res) => {
   const query = `UPDATE movies SET title = $1, description = $2 WHERE id = $3;`;
   const id = req.params.id;
-  const updatedTitle = req.body.updatedTitle;
-  const updatedDescription = req.body.updatedDescription;
+  const updatedTitle = req.body.title;
+  const updatedDescription = req.body.description;
 
   pool
     .query(query, [updatedTitle, updatedDescription, id])
