@@ -42,7 +42,7 @@ App that displays movie data from database. Allows user to click on a single mov
 
 - [ ] Allow the user to remove a genre from a movie.
 
-- [ ] Only display the top 10 movies.
+- [x] Only display the top 10 movies.
 
 - [x] Allow the user to search for movie titles with a search bar on the home page (you can do this on the client side or the server side, server side is a bigger stretch, but good practice).
 
