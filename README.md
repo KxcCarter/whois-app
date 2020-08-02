@@ -24,7 +24,7 @@ App that displays movie data from database. Allows user to click on a single mov
 - [x] Allow user to cancel changes or save changes.
 - [x] Return back to display component after save or cancel.
 
-[ ] Style app using Material-UI _I may want to do this first_
+[x] Style app using Material-UI
 
 [ ] Add Route change animations
 
@@ -34,7 +34,7 @@ App that displays movie data from database. Allows user to click on a single mov
 
 - [ ] Display all genres on movie list page. Research [array_agg](https://stackoverflow.com/questions/43458174/how-to-save-and-return-javascript-object-with-subarray-in-normalized-sql) to make this possible.
 
-- [ ] Move sagas and reducers out of your `index.js` and into separate files (ideally in `src/redux/reducers` and `src/redux/sagas` folders).
+- [x] Move sagas and reducers out of your `index.js` and into separate files (ideally in `src/redux/reducers` and `src/redux/sagas` folders).
 
 - [x] Allow the user to refresh the details or edit page. The url for the details page would be something like `/details/1` for movie with id of `1`. Research [react router params](https://reacttraining.com/react-router/web/example/url-params).
 

@@ -38,6 +38,27 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// GET single movie by title
+router.get('/search/:title/title', (req, res) => {
+  const title = req.params.title;
+  console.log(req.params);
+  const query = `SELECT movies.id, movies.title, movies.description, movies.poster, array_agg(genres.name) AS genres FROM movies
+                JOIN movies_genre ON movies.id = movies_genre.movie_id
+                JOIN genres ON genres.id = movies_genre.genre_id
+                WHERE movies.title = $1
+                GROUP BY movies.id;`;
+  pool
+    .query(query, [title])
+    .then((dbRes) => {
+      console.log(dbRes.rows);
+      res.send(dbRes.rows);
+    })
+    .catch((err) => {
+      console.log('GET error: ', err);
+      res.sendStatus(500);
+    });
+});
+
 // genres
 router.get('/genres', (req, res) => {
   const query = `SELECT * FROM genres;`;
