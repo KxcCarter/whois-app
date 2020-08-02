@@ -11,7 +11,7 @@ function* rootSaga() {
   yield takeEvery('GET_SINGLE_MOVIE', getSingleMovie);
   yield takeEvery('GET_GENRES', getGenres);
   yield takeEvery('UPDATE_MOVIE', updateMovie);
-  yield takeEvery('MOVIE_SEARCH', searchForMovie);
+  yield takeEvery('GET_MOVIE_SEARCH', searchForMovie);
 }
 
 export default rootSaga;
