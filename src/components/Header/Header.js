@@ -51,7 +51,6 @@ const useStyles = makeStyles((theme) => ({
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create('width'),
     width: '100%',
@@ -81,9 +80,13 @@ const Header = () => {
       type: 'MOVIE_SEARCH',
       payload: searchQuery,
     });
+    setSearchQuery('');
+  };
 
-    console.log('Logging store.movieSearch.id:', store.movieSearch.id);
-    // history.push(`/details/${store.movieSearch.id}`);
+  const handleGetAllMovies = () => {
+    dispatch({
+      type: 'GET_ALL_MOVIES',
+    });
   };
 
   return (
@@ -93,6 +96,9 @@ const Header = () => {
           <Typography className={classes.title} variant="h4" noWrap>
             Movies List
           </Typography>
+          <Button variant="outlined" onClick={handleGetAllMovies}>
+            Show All
+          </Button>
 
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -104,6 +110,7 @@ const Header = () => {
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
+              value={searchQuery}
               inputProps={{ 'aria-label': 'search' }}
               onChange={handleChange}
             />

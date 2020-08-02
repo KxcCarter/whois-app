@@ -1,6 +1,9 @@
 import { put } from 'redux-saga/effects';
 import axios from 'axios';
 
+// This is part of my attempt to be able to search for a movie by querying the database.
+// This file is currently not being used and it's imports are commented out in _rootSaga.js
+
 function* searchForMovie(action) {
   try {
     console.log('Movie title searched for:', action.payload);
