@@ -39,6 +39,9 @@ class MovieDetails extends Component {
       'Logging this.props.details.genres:',
       this.props.details.genres
     );
+    // const genres = this.props.details.genres.map((item) => {
+    //   return <p>{item}</p>;
+    // });
     return (
       <Box>
         <Box m={2}>
