@@ -19,6 +19,9 @@ router.get('/', (req, res) => {
 });
 
 // GET single movie
+
+// NOTE: This code works, but is not in use.
+//  I was not able to find a way to display the results in the DOM, so I decided to just call a filter on movies.reducer.
 router.get('/:id', (req, res) => {
   const id = req.params.id;
   const query = `SELECT movies.id, movies.title, movies.description, movies.poster, array_agg(genres.name) AS genres FROM movies
