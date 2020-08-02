@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { connect, useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+// --- Material-UI ---
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -61,21 +64,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header() {
+const Header = () => {
   const classes = useStyles();
   const [searchQuery, setSearchQuery] = useState('');
   const dispatch = useDispatch();
+  const store = useSelector((store) => store);
+  const history = useHistory();
 
   const handleChange = (event) => {
     setSearchQuery(event.target.value);
   };
 
   const handleSubmitSearch = () => {
-    console.log(searchQuery);
+    console.log('searchQuery text:', searchQuery);
     dispatch({
-      type: 'SET_MOVIE_SEARCH',
+      type: 'MOVIE_SEARCH',
       payload: searchQuery,
     });
+
+    console.log('Logging store.movieSearch.id:', store.movieSearch.id);
+    // history.push(`/details/${store.movieSearch.id}`);
   };
 
   return (
@@ -109,4 +117,6 @@ export default function Header() {
       </AppBar>
     </div>
   );
-}
+};
+
+export default connect()(Header);

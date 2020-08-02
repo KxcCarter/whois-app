@@ -3,10 +3,11 @@ import axios from 'axios';
 
 function* searchForMovie(action) {
   try {
+    console.log('Movie title searched for:', action.payload);
     const response = yield axios.get(
       `/api/movies/search/${action.payload}/title`
     );
-    console.log('Get one movie payload:', action.payload);
+
     yield put({
       type: 'SET_MOVIE_SEARCH',
       payload: response.data[0],

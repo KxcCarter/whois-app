@@ -2,7 +2,7 @@
 
 ## Description
 
-App that displays movie data from database. Allows user to click on a single movie and display details pertaining to it. Allows user to edit movie name and description. Allows user to add their own movies to database.
+App that displays movie data from database. Allows user to click on a single movie and display details pertaining to it. Allows user to edit movie name and description.
 
 ## TO DO
 
@@ -42,6 +42,8 @@ App that displays movie data from database. Allows user to click on a single mov
 
 - [ ] Allow the user to remove a genre from a movie.
 
-- [ ] Only display the top 10 movies, and allow the user to search for movie titles with a search bar on the home page (you can do this on the client side or the server side, server side is a bigger stretch, but good practice).
+- [ ] Only display the top 10 movies.
+
+- [ ] Allow the user to search for movie titles with a search bar on the home page (you can do this on the client side or the server side, server side is a bigger stretch, but good practice).
 
 - [ ] Create an `Admin` page. Add a link from the `Home` page to the `Admin` page. The page should initially display a login form (an input for username and an input for password). When the user enters the correct username (`camera`) and password (`action`), the page should display a form to add genres to the database, and a list of all of the genres with an `x` to remove them from the database. Note: This isn't actually secure, but it's pretty fun, and really good practice.
