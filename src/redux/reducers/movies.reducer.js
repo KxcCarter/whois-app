@@ -6,6 +6,10 @@ const movies = (state = [], action) => {
       return (state = state.filter((item, index) => {
         return item.title === action.payload;
       }));
+    case 'SHOW_TOP_TEN':
+      return (state = state.filter((item, index) => {
+        return index < 10;
+      }));
     default:
       return state;
   }

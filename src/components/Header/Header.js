@@ -89,6 +89,12 @@ const Header = () => {
     });
   };
 
+  const showTopTen = () => {
+    dispatch({
+      type: 'SHOW_TOP_TEN',
+    });
+  };
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -96,10 +102,17 @@ const Header = () => {
           <Typography className={classes.title} variant="h4" noWrap>
             Movies List
           </Typography>
-          <Button variant="outlined" onClick={handleGetAllMovies}>
-            Show All
-          </Button>
-
+          <Box m={1}>
+            <Button variant="outlined" onClick={handleGetAllMovies}>
+              Show All
+            </Button>
+          </Box>
+          <Box m={1}>
+            <Button variant="outlined" onClick={showTopTen}>
+              {' '}
+              Top 10
+            </Button>
+          </Box>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
