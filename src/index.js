@@ -4,60 +4,25 @@ import './index.css';
 import App from './components/App/App.js';
 // import AnimatedApp from './components/AnimationApp/AnimationApp';
 import registerServiceWorker from './registerServiceWorker';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 // Provider allows us to use redux within our react app
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
-import { takeEvery, put } from 'redux-saga/effects';
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
-import axios from 'axios';
 
-// Import Sagas
+// --- Import Sagas
 import rootSaga from './redux/sagas/_rootSaga';
+
+// --- Import Reducers
+import rootReducer from './redux/reducers/_root.reducer';
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
-// --- REDUCERS ---
-
-// Used to store movies returned from the server
-const movies = (state = [], action) => {
-  switch (action.type) {
-    case 'SET_MOVIES':
-      return (state = action.payload);
-    default:
-      return state;
-  }
-};
-
-const singleMovie = (state = {}, action) => {
-  switch (action.type) {
-    case 'SET_SINGLE_MOVIE':
-      return action.payload;
-    default:
-      return state;
-  }
-};
-
-// Used to store the movie genres
-const genres = (state = [], action) => {
-  switch (action.type) {
-    case 'SET_GENRES':
-      return action.payload;
-    default:
-      return state;
-  }
-};
-
 // Create one store that all components can use
 const storeInstance = createStore(
-  combineReducers({
-    movies,
-    singleMovie,
-    genres,
-  }),
-  // Add sagaMiddleware to our store
+  rootReducer,
   applyMiddleware(sagaMiddleware, logger)
 );
 
