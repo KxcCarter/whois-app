@@ -17,12 +17,9 @@ class EditMovie extends Component {
       match: { params },
     } = this.props;
 
-    const id = params.id;
-    console.log('Movie id we are searching for:', id);
-
     this.props.dispatch({
       type: 'GET_SINGLE_MOVIE',
-      payload: id,
+      payload: params.id,
     });
   }
 
@@ -47,7 +44,7 @@ class EditMovie extends Component {
       poster: this.props.details.poster,
       genres: [this.props.details.genres],
     });
-    this.props.history.goBack();
+    this.props.history.push(`/details/${this.props.details.id}`);
   };
 
   render() {
@@ -61,10 +58,9 @@ class EditMovie extends Component {
             <Box p={2}>
               <TextField
                 id="standard-multiline-flexible"
-                label="Title"
                 multiline
                 rowsMax={3}
-                value={this.state.title}
+                value={this.state.title || this.props.details.title}
                 onChange={this.handleChange('title')}
               />
             </Box>
@@ -81,11 +77,10 @@ class EditMovie extends Component {
               </Typography>
               <TextField
                 id="standard-multiline-static"
-                label="Description"
                 multiline
                 rowsMax={6}
                 fullWidth={true}
-                value={this.state.description}
+                value={this.state.description || this.props.details.description}
                 onChange={this.handleChange('description')}
               />
 

@@ -68,6 +68,7 @@ class MovieDetails extends Component {
           </Box>
           <CardContent>
             <Box m={1}>
+              {/* I haven't figured out how to display genres in the proper format. */}
               <Typography variant="caption">
                 {this.props.details.genres}
               </Typography>

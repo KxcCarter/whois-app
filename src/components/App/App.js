@@ -9,6 +9,7 @@ import MovieList from '../pages/MovieList/MovieList';
 import { Container, Box, Typography } from '@material-ui/core';
 import MovieDetails from '../pages/MovieDetails/MovieDetails';
 import EditMovie from '../pages/EditMovie/EditMovie';
+import Header from '../Header/Header';
 
 class App extends Component {
   // Renders the entire app on the DOM
@@ -16,9 +17,7 @@ class App extends Component {
     return (
       <Router>
         <Container maxWidth="md">
-          <Box mx="auto" p={3}>
-            <Typography variant="h2">Movie List</Typography>
-          </Box>
+          <Header />
 
           <Route exact path="/" component={MovieList}></Route>
           <Route path="/details/:id" component={MovieDetails}></Route>
