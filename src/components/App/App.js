@@ -6,7 +6,7 @@ import './App.css';
 // --- custom components ---
 
 import MovieList from '../pages/MovieList/MovieList';
-import { Container, Box, Typography } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import MovieDetails from '../pages/MovieDetails/MovieDetails';
 import EditMovie from '../pages/EditMovie/EditMovie';
 import Header from '../Header/Header';
