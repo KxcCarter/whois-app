@@ -39,9 +39,9 @@ class MovieDetails extends Component {
       'Logging this.props.details.genres:',
       this.props.details.genres
     );
-    // const genres = this.props.details.genres.map((item) => {
-    //   return <p>{item}</p>;
-    // });
+    const genres = this.props.details.genres.map((item, index) => {
+      return <span key={index}>{item} </span>;
+    });
     return (
       <Box>
         <Box m={2}>
@@ -71,10 +71,7 @@ class MovieDetails extends Component {
           </Box>
           <CardContent>
             <Box m={1}>
-              {/* I haven't figured out how to display genres in the proper format. */}
-              <Typography variant="caption">
-                {this.props.details.genres}
-              </Typography>
+              <Typography variant="caption">{genres}</Typography>
             </Box>
             <Typography variant="body2" color="textSecondary" component="p">
               {this.props.details.description}

@@ -1,4 +1,4 @@
-const singleMovie = (state = {}, action) => {
+const singleMovie = (state = { genres: [] }, action) => {
   switch (action.type) {
     case 'SET_SINGLE_MOVIE':
       return action.payload;
