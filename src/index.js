@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App.js';
-// import AnimatedApp from './components/AnimationApp/AnimationApp';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware } from 'redux';
 // Provider allows us to use redux within our react app

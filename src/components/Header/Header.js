@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { connect, useSelector, useDispatch } from 'react-redux';
-// import { useHistory } from 'react-router-dom';
 
 // --- Material-UI ---
 import AppBar from '@material-ui/core/AppBar';
@@ -67,8 +66,6 @@ const Header = () => {
   const classes = useStyles();
   const [searchQuery, setSearchQuery] = useState('');
   const dispatch = useDispatch();
-  // const store = useSelector((store) => store);
-  // const history = useHistory();
 
   const handleChange = (event) => {
     setSearchQuery(event.target.value);

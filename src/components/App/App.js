@@ -12,7 +12,6 @@ import EditMovie from '../pages/EditMovie/EditMovie';
 import Header from '../Header/Header';
 
 class App extends Component {
-  // Renders the entire app on the DOM
   render() {
     return (
       <Router>
