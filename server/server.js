@@ -1,18 +1,18 @@
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
-const movies = require('./routes/movies.router');
-const port = process.env.PORT || 5000;
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
-/** ---------- MIDDLEWARE ---------- **/
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json()); // needed for angular requests
-app.use(express.static('build'));
+const whoIsAPI = require('./routers/who-is-API.router');
 
-/** ---------- ROUTES ---------- **/
-app.use('/api/movies', movies);
+const server = express();
+const PORT = 5000;
 
-/** ---------- START SERVER ---------- **/
-app.listen(port, function () {
-  console.log('Listening on port: ', port);
+server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({ extended: true }));
+
+server.use('/api', whoIsAPI);
+
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
