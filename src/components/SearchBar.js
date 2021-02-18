@@ -1,25 +1,11 @@
 import React, { useState } from 'react';
-// import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, Box, TextField, Button } from '@material-ui/core';
-import axios from 'axios';
 
 import RadioButtonGroup from './RadioButtonGroup';
 
-const SearchBar = ({ setApiResponse }) => {
+const SearchBar = ({ handleSearchSubmit }) => {
   const [searchValue, setSearchValue] = useState('google.com');
   const [searchType, setSearchType] = useState('domain');
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    console.log('Hey you here is the data:', { searchType }, { searchValue });
-
-    const { data } = await axios.get('/api', {
-      params: {
-        domainName: searchValue,
-      },
-    });
-    setApiResponse(data);
-  };
 
   const selectSearchType = (event) => {
     setSearchType(event.target.value);
@@ -28,7 +14,7 @@ const SearchBar = ({ setApiResponse }) => {
   return (
     <Paper>
       <Box m={3} p={3}>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(event) => handleSearchSubmit(event, searchValue)}>
           <Grid container spacing={1} justify="center" alignItems="center">
             <Grid item xs={8} sm={3}>
               <Box paddingBottom={1}>
@@ -38,6 +24,7 @@ const SearchBar = ({ setApiResponse }) => {
                 />
               </Box>
             </Grid>
+
             <Grid item xs={12} sm={9}>
               <TextField
                 label="Search for a Domain or IP"
@@ -48,8 +35,9 @@ const SearchBar = ({ setApiResponse }) => {
                 onChange={(e) => setSearchValue(e.target.value)}
               />
             </Grid>
-            <Grid item xs={4} sm={12}>
-              <Button type="submit" variant="contained" size="large">
+
+            <Grid item xs={4} sm={6}>
+              <Button type="submit" variant="contained" size="large" fullWidth>
                 Search
               </Button>
             </Grid>
