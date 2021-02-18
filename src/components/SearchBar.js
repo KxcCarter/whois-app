@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import RadioButtonGroup from './RadioButtonGroup';
 
-const SearchBar = () => {
+const SearchBar = ({ setApiResponse }) => {
   const [searchValue, setSearchValue] = useState('google.com');
   const [searchType, setSearchType] = useState('domain');
 
@@ -18,8 +18,7 @@ const SearchBar = () => {
         domainName: searchValue,
       },
     });
-
-    console.log(data.WhoisRecord);
+    setApiResponse(data);
   };
 
   const selectSearchType = (event) => {
@@ -31,13 +30,15 @@ const SearchBar = () => {
       <Box m={3} p={3}>
         <form onSubmit={handleSubmit}>
           <Grid container spacing={1} justify="center" alignItems="center">
-            <Grid item xs={2}>
-              <RadioButtonGroup
-                searchType={searchType}
-                selectSearchType={selectSearchType}
-              />
+            <Grid item xs={8} sm={3}>
+              <Box paddingBottom={1}>
+                <RadioButtonGroup
+                  searchType={searchType}
+                  selectSearchType={selectSearchType}
+                />
+              </Box>
             </Grid>
-            <Grid item xs={9}>
+            <Grid item xs={12} sm={9}>
               <TextField
                 label="Search for a Domain or IP"
                 variant="outlined"
@@ -47,7 +48,7 @@ const SearchBar = () => {
                 onChange={(e) => setSearchValue(e.target.value)}
               />
             </Grid>
-            <Grid item xs={1}>
+            <Grid item xs={4} sm={12}>
               <Button type="submit" variant="contained" size="large">
                 Search
               </Button>
