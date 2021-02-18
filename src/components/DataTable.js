@@ -9,6 +9,7 @@ import Paper from '@material-ui/core/Paper';
 
 import ExpandedDetailsModal from './ExpandedDetailsModal';
 import { Typography } from '@material-ui/core';
+import ExpandedDetailsAccordion from './ExpandedDetailsAccordion';
 
 const useStyles = makeStyles({
   table: {
@@ -16,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function DataTable({ data }) {
+export default function DataTable({ data, dense }) {
   const classes = useStyles();
 
   const dataKeys = Object.keys(data);
@@ -29,7 +30,8 @@ export default function DataTable({ data }) {
             <strong>{item}</strong>
           </TableCell>
           <TableCell align="left">
-            <ExpandedDetailsModal data={data[item]} title={item} />
+            {/* <ExpandedDetailsModal data={data[item]} title={item} /> */}
+            <ExpandedDetailsAccordion data={data[item]} title={item} />
           </TableCell>
         </TableRow>
       );
@@ -49,7 +51,11 @@ export default function DataTable({ data }) {
 
   return (
     <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
+      <Table
+        className={classes.table}
+        aria-label="simple table"
+        size={dense ? 'small' : 'medium'}
+      >
         <TableBody>{formattedData}</TableBody>
       </Table>
     </TableContainer>

@@ -1,12 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import { Typography } from '@material-ui/core';
 import DataTable from './DataTable';
 
@@ -80,12 +76,7 @@ export default function ExpandedDetailsModal({ title, data }) {
   const body = (
     <div style={modalStyle} className={classes.paper}>
       <h2 id="simple-modal-title">{title}</h2>
-      {/* <TableContainer component={Paper} id="simple-modal-description">
-        <Table className={classes.table} aria-label="simple table" size="small">
-          <TableBody>{formattedData}</TableBody>
-        </Table>
-      </TableContainer> */}
-      <DataTable data={data} />
+      <DataTable data={data} dense />
     </div>
   );
 

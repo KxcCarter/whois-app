@@ -25,7 +25,7 @@ const App = () => {
   };
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="lg">
       <Box>
         <Typography variant="h2" align="center">
           WHOIS Search
