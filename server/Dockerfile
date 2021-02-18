@@ -1,13 +1,12 @@
 FROM node:14-alpine
 
-RUN mkdir -p /app-server
-WORKDIR /app-server
+WORKDIR /server
 
-COPY package.json /app
+COPY package.json /server
 
 RUN npm install
 
-COPY . /app
+COPY . /server
 
 ENV PORT=8080
 

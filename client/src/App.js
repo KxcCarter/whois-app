@@ -11,9 +11,10 @@ const App = () => {
 
   const handleSearchSubmit = async (event, searchValue) => {
     event.preventDefault();
+    console.log('Calling API from react-app');
     setLoading(true);
 
-    const { data } = await axios.get('/api', {
+    const { data } = await axios.get(`/api`, {
       params: {
         domainName: searchValue,
       },

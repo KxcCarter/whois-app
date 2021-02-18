@@ -1,43 +1,23 @@
 version: '3'
 
 services:
-  ##
-  ## CONTAINER for Client Side Application
-  ## to test service run:
-  ##     docker-compose up --build -d client
-  ## ----------------------------------------
-  client:
+  react-app:
+    image: react-app
     stdin_open: true
-    build:
-      context: ./
-      dockerfile: ./Dockerfile.client
     ports:
-      - 3000:3000 # expose ports - HOST:CONTAINER (for create-react-app)
-      - 35729:35729 # expose ports - HOST:CONTAINER (for serviceworker warm reloading)
-    volumes:
-      - './src:/app-client/src'
-      - './public:/app-client/public'
-      - './package.json:/app-client/package.json'
+      - '3000:3000'
+    networks:
+      - whois-app
     depends_on:
-      - server
-    command: npm run client
-  ##
-  ## CONTAINER for Server Application
-  ## to test service run:
-  ##     docker-compose up --build -d server
-  ## ----------------------------------------
-  server:
-    build:
-      context: ./
-      dockerfile: ./Dockerfile.server
-    ports:
-      - 5000:5000 # expose ports - HOST:CONTAINER
-    environment:
-      NODE_ENV: ${NODE_ENV}
+      - api-server
+  api-server:
+    image: api-server
 
-    volumes:
-      - './server:/app-server/server'
-      - './server/dist:/app-server/dist'
-      - './public:/app-server/public'
-      - './package.json:/app-server/package.json'
-    command: npm run server
+    container_name: server
+    ports:
+      - '5000:5000'
+    networks:
+      - whois-app
+networks:
+  whois-app:
+    driver: bridge

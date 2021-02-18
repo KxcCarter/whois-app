@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
       },
     })
     .then((response) => {
+      console.log('Success');
       res.send(response.data);
     })
     .catch((err) => {
