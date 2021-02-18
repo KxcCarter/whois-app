@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, Box, TextField, Button } from '@material-ui/core';
+import axios from 'axios';
 
 import RadioButtonGroup from './RadioButtonGroup';
 
@@ -8,9 +9,17 @@ const SearchBar = () => {
   const [searchValue, setSearchValue] = useState('google.com');
   const [searchType, setSearchType] = useState('domain');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log('Hey you here is the data:', { searchType }, { searchValue });
+
+    const { data } = await axios.get('/api', {
+      params: {
+        domainName: searchValue,
+      },
+    });
+
+    console.log(data.WhoisRecord);
   };
 
   const selectSearchType = (event) => {
