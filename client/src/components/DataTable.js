@@ -30,8 +30,8 @@ export default function DataTable({ data, dense }) {
             <strong>{item}</strong>
           </TableCell>
           <TableCell align="left">
-            {/* <ExpandedDetailsModal data={data[item]} title={item} /> */}
-            <ExpandedDetailsAccordion data={data[item]} title={item} />
+            <ExpandedDetailsModal data={data[item]} title={item} />
+            {/* <ExpandedDetailsAccordion data={data[item]} title={item} /> */}
           </TableCell>
         </TableRow>
       );
