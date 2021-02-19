@@ -8,8 +8,8 @@ services:
       - '3000:3000'
     networks:
       - whois-app
-    depends_on:
-      - api-server
+    # depends_on:
+    #   - api-server
   api-server:
     image: api-server
 

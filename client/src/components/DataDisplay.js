@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Paper, Box, Typography } from '@material-ui/core';
+import { Grid, Paper, Box, Typography, Container } from '@material-ui/core';
 import DataTable from './DataTable';
 
 const DataDisplay = ({ apiResponse }) => {
@@ -10,6 +10,7 @@ const DataDisplay = ({ apiResponse }) => {
           <Typography variant="h3" align="center">
             Search Results
           </Typography>
+
           <Grid container spacing={1} justify="center">
             <Grid item xs={12} zeroMinWidth>
               {apiResponse && <DataTable data={apiResponse.WhoisRecord} />}

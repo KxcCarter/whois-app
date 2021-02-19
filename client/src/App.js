@@ -5,6 +5,8 @@ import { Box, Typography, Container, LinearProgress } from '@material-ui/core';
 import SearchBar from './components/SearchBar';
 import DataDisplay from './components/DataDisplay';
 
+import '../src/index.css';
+
 const App = () => {
   const [apiResponse, setApiResponse] = useState(null);
   const [loading, setLoading] = useState(false);
