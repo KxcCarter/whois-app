@@ -6,7 +6,7 @@ const DataDisplay = ({ apiResponse }) => {
   return (
     <Grid item zeroMinWidth>
       <Paper>
-        <Box>
+        <Box marginBottom={5}>
           <Typography variant="h3" align="center">
             Search Results
           </Typography>
